@@ -1,0 +1,82 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="assets/css/bootstrap.css">
+	</head>
+	<body>
+		<form id="register-form">
+			<div class="container-md">
+				<div class="form-group">
+					<label for="exampleInputname">Name</label>
+					<input type="text" class="form-control" required id="name" name="name" aria-describedby="namehelp">
+				</div>
+				<div class="form-group">
+					<label for="exampleInputEmail1">E-mail</label>
+					<input type="email" class="form-control" required id="email" name="email" aria-describedby="emailHelp">
+				</div>
+				<div class="form-group">
+					<label for="exampleInputPassword1">Password</label>
+					<input type="password" class="form-control" required id="password"  name="password">
+				</div>
+				<div class="form-group">
+					<label for="exampleInputPassword">Repeat Password</label>
+					<input type="password" class="form-control" required id="repeatpwd" name="repeatpwd">
+				</div>
+				<div class="form-group">
+					<label for="exampleFormControlFile1">Avatar</label>
+					<input type="file" class="form-control-file" id="exampleFormControlFile1">
+				</div>
+				<div class="control-group">
+					<div class="controls">
+						<div class="g-recaptcha"><div style="width: 304px; height: 78px;"><div><iframe title="reCAPTCHA" width="304" height="78" role="presentation" name="a-na25hl927u0a" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox allow-storage-access-by-user-activation" src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6Lcu6WokAAAAAIK0F9P-2ByQ9mMWYKeeqqhIFFmM&amp;co=aHR0cHM6Ly9lZHVwcm9wbGlzdGluZy5jb206NDQz&amp;hl=en&amp;v=rKbTvxTxwcw5VqzrtN-ICwWt&amp;size=normal&amp;cb=puuxeblqfyhj"></iframe></div><textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div><iframe style="display: none;"></iframe></div><br> 
+					</div>
+				</div>
+				<button type="submit" class="btn btn-primary">Create</button>
+			</form>
+		</div>
+		<script src="assets/js/jquery.js"></script>
+		<script src="assets/js/jquery-validate.js"></script>
+		<script>
+			$(document).ready(function() {
+				
+				$("#register-form").validate({
+					rules: {
+						name: {
+							required: true
+						},
+						email: {
+							required: true,
+							email: true
+						},
+						password: {
+							required: true,
+							minlength: 8
+						},
+						repeatpwd:{
+							required: true,
+							minlength: 8, 
+							equalTo: '#password'
+						}
+					},
+					messages: {
+						email: {
+							required: "Please enter your email",
+							email: "Please enter a valid email address"
+						},
+						password: {
+							required: "Please provide a password",
+							minlength: "Your password must be at least 8 characters long"
+						},
+						repeatpwd: {
+							required: "Please Retype a password",
+							minlength: "Your password must be at least 8 characters long",
+							equalTo: "Please enter the same password as above"
+						}
+					},
+					submitHandler: function(form) {
+						form.submit();
+					}
+				});
+			});
+		</script>
+	</body>
+</html>
